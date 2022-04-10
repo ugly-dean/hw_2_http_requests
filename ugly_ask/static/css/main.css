@@ -1,0 +1,251 @@
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+main > .container {
+  padding: 60px 15px 0;
+}
+
+.avatar-base {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px; /* Радиус скругления */
+    border: 1px solid #00FA9A; /* Параметры рамки */
+    vertical-align: middle;
+}
+
+.link-usual {
+    text-decoration: none;
+    color: #00FA9A;
+    margin-right: 10px;
+}
+.link-usual:hover {
+    color: #90EE90;
+}
+.link-usual:visited {
+    color: #3CB371;
+}
+
+
+.link-profile {
+    width: 150px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid #00FA9A;
+}
+.link-profile:hover {
+    border: 1px solid #90EE90;
+}
+
+.create-link {
+    margin-left: 10px;
+}
+
+#ugly-brand {
+    font-size: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+    text-decoration: none;
+    color: #00FA9A;
+    margin-right: 10px;
+}
+
+.btn-ask {
+    border: 1px solid #00FA9A;
+    color: #00FA9A;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 10px;
+}
+.btn-ask:hover {
+    background-color: #90EE90;
+    border: 1px solid #90EE90;
+    color:
+}
+
+.btn-go {
+    border: 1px solid #00FA9A;
+    background-color: #00FA9A;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 28px;
+}
+.btn-go:hover {
+    background-color: #90EE90;
+    border: 1px solid #90EE90;
+    color: #212529;
+}
+
+#btn-answer {
+    margin-bottom: 10px;
+}
+
+.btn-like {
+    color: #00FA9A;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+}
+.btn-like:hover {
+    color:
+}
+
+.counters {
+   background-color: #00FA9A;
+   border-radius: 3px;
+   color: #212529;
+   margin-left: 4px;
+   padding-left: 4px;
+   padding-right: 4px;
+   padding-top: 2px;
+   padding-bottom: 2px;
+}
+
+.ugliest-tags,.ugliest-members,.questions {
+    background-color: #808080;
+    border-radius: 15px;
+    border: 3px solid #00FA9A;
+    margin-top: 20px;
+    position: sticky;
+}
+
+.head {
+    margin: 15px;
+}
+
+.question, .answer {
+    border: 2px solid #00FA9A;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+.question-main {
+    border: 2px solid #00FA9A;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+.question-tags {
+    display: flex;
+    margin: auto 0 0 0;
+}
+
+.avatar-question {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px; /* Радиус скругления */
+    border: 1px solid #00FA9A; /* Параметры рамки */
+    vertical-align: middle;
+}
+
+.avatar-question-main {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px; /* Радиус скругления */
+    border: 1px solid #00FA9A; /* Параметры рамки */
+    vertical-align: middle;
+}
+
+.link-question {
+    text-decoration: none;
+    color: #212529;
+    margin-right: 10px;
+    text-align: center;
+}
+.link-question:hover {
+    color: #90EE90;
+}
+
+.link-question-active {
+    text-decoration: none;
+    color: #00FA9A;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.link-question-active:hover {
+    color: #90EE90;
+}
+
+.new-question {
+    text-decoration: none;
+    color: #212529;
+    margin-right: 10px;
+}
+
+.paginator {
+    border: 2px solid #00FA9A;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.link-page {
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+}
+
+.link-page:hover {
+    background-color: #90EE90;
+    border-radius: 8px;
+    color: #212529;
+}
+
+.link-page-active {
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    background-color: #00FA9A;
+    border-radius: 8px;
+}
+
+.link-page-active:hover {
+    color: #212529;
+}
+
+.form-margin {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.form-margin-bottom {
+    margin-bottom: 15px;
+}
+
+.form-title {
+    color: #00FA9A;
+}
+
+.form-text-warn {
+    font-size: 12px;
+    color: #f00;
+    margin-top: 5px;
+}
+
+.form-min-max {
+    max-height: 260px;
+    min-height: 100px;
+}
+
+.ugly-checkbox:checked {
+    background-color: #00FA9A;
+}
+
+

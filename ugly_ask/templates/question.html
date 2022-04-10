@@ -1,0 +1,17 @@
+{% extends "includes/base.html" %}
+
+{% block content %}
+
+  {% include "includes/main_question.html" %}
+
+  {% for answer in page %}
+    {% include "includes/answer.html" %}
+  {% endfor %}
+
+  {% include "includes/text_filed_answer.html" %}
+
+  {% include "includes/paginator.html" %}
+
+{% endblock content %}
+
+

@@ -1,0 +1,110 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Trebushnikov Dmitry">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>UglyAsk · Bootstrap v5.1</title>
+
+    <link rel="stylesheet" href={% static "css/bootstrap.min.css" %}>
+    <link rel="stylesheet" href={% static "css/main.css" %}>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
+  </head>
+
+<body class="d-flex flex-column h-100">
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a id="ugly-brand" href={% url 'index' %}>UglyAsk</a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Let's ask something ugly!" aria-label="Search">
+          <button class="btn btn-ask" type="submit">Find!</button>
+        </form>
+        <a style="margin-left: 10px" class="link-usual" href={% url 'ask' %}>Create an ugly question...</a>
+      </div>
+      {% if index.user %}
+        <a class="link-usual link-profile" href={% url 'index' %}>
+          <img class="avatar-base" src="uploads/{{ index.user }}/avatar.jpg" alt="">
+          {{ index.user }}
+        </a>
+      <div class="col-md-2">
+        <a class="link-usual" href={% url 'index' %}>Settings</a>
+        <a class="link-usual" href={% url 'index' %}>Log out</a>
+      </div>
+      {% else %}
+        <div class="col-md-2">
+          <a class="link-usual" href={% url 'login' %}>Log in</a>
+          <a class="link-usual" href={% url 'signup' %}>Sing up</a>
+        </div>
+      {% endif %}
+    </div>
+  </nav>
+</header>
+
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-9 questions">
+        {% block content %}
+        {% endblock content %}
+      </div>
+      <div class="col-3">
+        <div class="ugliest-tags">
+          <h3 class="head">Ugliest tags</h3>
+          <ul>
+            {% for tag in hot_tags %}
+              <li><a class="link-usual" href={% url 'tags' tag %}>{{ tag }}</a></li>
+            {% endfor %}
+<!--             <li><a class="link-usual" href="ugly.html">ugly</a></li> -->
+<!--             <li><a class="link-usual" href="nasty.html">nasty</a></li> -->
+<!--             <li><a class="link-usual" href="useless.html">useless</a></li> -->
+<!--             <li><a class="link-usual" href="awkward.html">awkward</a></li> -->
+<!--             <li><a class="link-usual" href="disqusting.html">disgusting</a></li> -->
+          </ul>
+        </div>
+        <div class="ugliest-members">
+          <h3 class="head">Ugliest members</h3>
+          <ol>
+            {% for member in hot_members %}
+              <li><a class="link-usual" href={% url 'users' member %}>{{ member }}</a></li>
+            {% endfor %}
+<!--             <li><a class="link-usual" href="ugly_dean.html">ugly_dean</a></li> -->
+<!--             <li><a class="link-usual" href="alinazna.html">alinazna</a></li> -->
+<!--             <li><a class="link-usual" href="dkokorev04.html">dkokorev04</a></li> -->
+<!--             <li><a class="link-usual" href="keshaproletarskiy.html">keshaproletarskiy</a></li> -->
+<!--             <li><a class="link-usual" href="ann___a.m.html">ann___a.m</a></li> -->
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+  <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>
+

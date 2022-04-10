@@ -1,0 +1,28 @@
+{% load static %}
+
+<div class="row question">
+  <div class="col-2">
+    <img class="avatar-question" src="uploads/{{quest.user}}/avatar.jpg" alt="">
+  </div>
+  <div class="col-10">
+    <h4><a class="link-usual" href={% url 'question' quest.index %}>{{ quest.title }}</a></h4>
+    <span style="margin-bottom: 10px;">{{ quest.text }}</span>
+    <div class="row">
+      <div class="col-8">
+        <a class="link-usual" href={% url 'question' quest.index %}>Answers ({{ quest.answers_count }})</a>
+        <span>Tags: &nbsp</span>
+        {% for tag in quest.tags %}
+          <a class="link-usual" href={% url 'tags' tag %}>{{ tag }}</a>
+        {% endfor %}
+      </div>
+      <div class="col-4 row">
+        <button type="button" class="col-6 btn btn-like">
+            <span class="like-text">Likes<span class="like-text counters">{{ quest.likes }}</span></span>
+        </button>
+        <button type="button" class="col-6 btn btn-like">
+            <span class="like-text">Hates<span class="like-text counters">{{ quest.dislikes }}</span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
