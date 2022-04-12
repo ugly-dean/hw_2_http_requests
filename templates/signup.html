@@ -1,0 +1,43 @@
+{% extends "includes/base.html" %}
+
+{% block content %}
+        <div class="row">
+          <div class="col-12">
+            <h3 class="head">Create ugly account</h3>
+          </div>
+        </div>
+
+        <form>
+          <div class="form-group form-margin">
+            <label for="exampleInputEmail1" class="form-label form-title">Ugly login</label>
+            <input class="form-control" aria-describedby="emailHelp" placeholder="Enter login">
+            <div class="form-text-warn">Sorry, this login already exists!</div>
+          </div>
+          <div class="form-group form-margin">
+            <label for="exampleInputEmail1" class="form-label form-title">Ugly email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <div class="form-text-warn">Sorry, this email already registered!</div>
+          </div>
+          <div class="mb-3 form-group form-margin">
+            <label for="exampleInputPassword1"class="form-label form-title">Ugly password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="mb-3 form-group form-margin">
+            <label for="exampleInputPassword1"class="form-label form-title">Repeat ugly password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <div class="form-text-warn">Passwords are not equal!</div>
+          </div>
+
+          <label for="exampleFormControlFile1" class="form-label form-title form-margin">Upload ugly avatar</label>
+          <div class="mb-3 form-group form-margin">
+            <input type="file" class="form-control"  placeholder="Choose file">
+          </div>
+
+          <div class="mb-3 form-check form-margin">
+            <input type="checkbox" class="form-check-input ugly-checkbox" id="exampleCheck1">
+            <label class="form-check-label from-title" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary form-margin btn-go">Go!</button>
+
+        </form>
+{% endblock content %}

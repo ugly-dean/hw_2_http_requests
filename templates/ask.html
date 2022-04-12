@@ -1,0 +1,40 @@
+{% extends "includes/base.html" %}
+
+{% block content %}
+
+        <div class="row">
+
+          <div class="col-12">
+            <h3 class="head">New ugly question</h3>
+          </div>
+
+        </div>
+
+        <form>
+
+          <div class="form-margin">
+            <label for="exampleInputEmail1" class="form-label form-title">Question title</label>
+            <input class="form-control">
+            <div class="form-text-warn">Question must have an ugly title!</div>
+          </div>
+
+          <div class="form-margin form-margin-bottom">
+            <label for="questionText" class="form-label form-title">Question text</label>
+            <textarea type="text" class="form-control form-min-max" id="questionText"></textarea>
+          </div>
+
+          <div class="form-margin form-margin-bottom">
+            <label for="questionText" class="form-label form-title">Ugly tags</label>
+            <input type="text" class="form-control" id="questionTags" aria-describedby="">
+          </div>
+
+          <div class="mb-3 form-check form-margin">
+            <input type="checkbox" class="form-check-input ugly-checkbox" id="exampleCheck1">
+            <label class="form-check-label from-title" for="exampleCheck1">Check me out</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary form-margin btn-go">Go!</button>
+
+        </form>
+
+{% endblock content %}

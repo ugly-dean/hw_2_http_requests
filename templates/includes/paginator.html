@@ -1,0 +1,29 @@
+{% load static %}
+
+<div class="row paginator">
+
+    {% if page.paginator.num_pages > 3 %}
+      <a class="col-2 link-page" href="?page=1">first (1)</a>
+    {% endif %}
+
+    {% if page.has_previous %}
+      {% if page.paginator.num_pages > 2 and page.number == page.paginator.num_pages %}
+        <a class="col-2 link-page" href="?page={{ page.previous_page_number|add:-1 }}">{{ page.previous_page_number|add:-1 }}</a>
+      {% endif %}
+      <a class="col-2 link-page" href="?page={{ page.previous_page_number }}">{{ page.previous_page_number }}</a>
+    {% endif %}
+
+    <a class="col-4 link-page-active" href="#">{{ page.number }}</a>
+
+    {% if page.has_next %}
+      <a class="col-2 link-page" href="?page={{ page.next_page_number }}">{{ page.next_page_number }}</a>
+      {% if page.paginator.num_pages > 2 and page.number == 1 %}
+        <a class="col-2 link-page" href="?page={{ page.next_page_number|add:1 }}">{{ page.next_page_number|add:1 }}</a>
+      {% endif %}
+    {% endif %}
+
+    {% if page.paginator.num_pages > 3 %}
+      <a class="col-2 link-page" href="?page={{ page.paginator.num_pages }}">last ({{ page.paginator.num_pages }})</a>
+    {% endif %}
+
+</div>

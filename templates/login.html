@@ -1,0 +1,29 @@
+{% extends "includes/base.html" %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+      <h3 class="head">Log ugly in</h3>
+    </div>
+  </div>
+
+  <form>
+    <div class="form-group form-margin">
+      <label for="exampleInputEmail1" class="form-label form-title">Ugly login</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <div class="form-text-warn">Login is incorrect!</div>
+    </div>
+    <div class="mb-3 form-group form-margin">
+      <label for="exampleInputPassword1"class="form-label form-title">Ugly password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="mb-3 form-check form-margin">
+      <input type="checkbox" class="form-check-input ugly-checkbox" id="exampleCheck1">
+      <label class="form-check-label from-title" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary form-margin btn-go">Go!</button>
+    <div class="mb-3 form-margin">
+      <a class="link-usual" href={% url 'signup' %}>Don't have an account?<br>Create new ugly one!</a>
+    </div>
+  </form>
+{% endblock content %}
