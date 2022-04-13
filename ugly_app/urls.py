@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
+from django.conf import settings
 from django.urls import path
 from ugly_app import views
 
@@ -24,5 +26,5 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('signup/', views.signup, name='signup'),
     path('ask/', views.ask, name='ask'),
-    path('/users/<str:user_name>/', views.users, name='users'),
-]
+    path('users/<str:user_name>/', views.users, name='users'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

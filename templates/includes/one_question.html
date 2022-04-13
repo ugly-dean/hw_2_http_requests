@@ -5,22 +5,22 @@
     <img class="avatar-question" src="uploads/{{quest.user}}/avatar.jpg" alt="">
   </div>
   <div class="col-10">
-    <h4><a class="link-usual" href={% url 'question' quest.index %}>{{ quest.title }}</a></h4>
+    <h4><a class="link-usual" href={% url 'question' quest.pk %}>{{ quest.title }}</a></h4>
     <span style="margin-bottom: 10px;">{{ quest.text }}</span>
     <div class="row">
       <div class="col-8">
-        <a class="link-usual" href={% url 'question' quest.index %}>Answers ({{ quest.answers_count }})</a>
+        <a class="link-usual" href={% url 'question' quest.pk %}>Answers ({{ answers }})</a>
         <span>Tags: &nbsp</span>
-        {% for tag in quest.tags %}
+        {% for tag in quest.tags.all %}
           <a class="link-usual" href={% url 'tags' tag %}>{{ tag }}</a>
         {% endfor %}
       </div>
       <div class="col-4 row">
         <button type="button" class="col-6 btn btn-like">
-            <span class="like-text">Likes<span class="like-text counters">{{ quest.likes }}</span></span>
+            <span class="like-text">Likes<span class="like-text counters">{{ likes }}</span></span>
         </button>
         <button type="button" class="col-6 btn btn-like">
-            <span class="like-text">Hates<span class="like-text counters">{{ quest.dislikes }}</span></span>
+            <span class="like-text">Hates<span class="like-text counters">{{ dislikes }}</span></span>
         </button>
       </div>
     </div>

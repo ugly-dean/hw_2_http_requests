@@ -46,7 +46,7 @@
       </div>
       {% if index.user %}
         <a class="link-usual link-profile" href={% url 'index' %}>
-          <img class="avatar-base" src="uploads/{{ index.user }}/avatar.jpg" alt="">
+          <img class="avatar-base" src="/uploads/{{ index.user }}/avatar.jpg" alt="">
           {{ index.user }}
         </a>
       <div class="col-md-2">
@@ -75,14 +75,9 @@
         <div class="ugliest-tags">
           <h3 class="head">Ugliest tags</h3>
           <ul>
-            {% for tag in hot_tags %}
-              <li><a class="link-usual" href={% url 'tags' tag %}>{{ tag }}</a></li>
+            {% for count, tag in hot_tags %}
+              <li><a class="link-usual" href={% url 'tags' tag %}>{{ tag }} ({{ count }})</a></li>
             {% endfor %}
-<!--             <li><a class="link-usual" href="ugly.html">ugly</a></li> -->
-<!--             <li><a class="link-usual" href="nasty.html">nasty</a></li> -->
-<!--             <li><a class="link-usual" href="useless.html">useless</a></li> -->
-<!--             <li><a class="link-usual" href="awkward.html">awkward</a></li> -->
-<!--             <li><a class="link-usual" href="disqusting.html">disgusting</a></li> -->
           </ul>
         </div>
         <div class="ugliest-members">
@@ -91,11 +86,6 @@
             {% for member in hot_members %}
               <li><a class="link-usual" href={% url 'users' member %}>{{ member }}</a></li>
             {% endfor %}
-<!--             <li><a class="link-usual" href="ugly_dean.html">ugly_dean</a></li> -->
-<!--             <li><a class="link-usual" href="alinazna.html">alinazna</a></li> -->
-<!--             <li><a class="link-usual" href="dkokorev04.html">dkokorev04</a></li> -->
-<!--             <li><a class="link-usual" href="keshaproletarskiy.html">keshaproletarskiy</a></li> -->
-<!--             <li><a class="link-usual" href="ann___a.m.html">ann___a.m</a></li> -->
           </ol>
         </div>
       </div>

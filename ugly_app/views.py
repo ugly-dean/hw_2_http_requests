@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
+from ugly_app.models import *
 
 # Create your views here.
 
@@ -54,59 +55,111 @@ INDEX_CONTEXT = {
         "awful",
         "awkward",
         "disqusting",
-    ],
-    "hot_members": [
+    ]
+}
+
+HOT_MEMBERS = [
         "ugly_dean",
         "alinazna",
         "artembabdustov",
         "keshaproletarskiy",
         "ann___a.m",
     ]
-}
+
+
+def hot_tags():
+    return Tag.objects.get_top_tags()
+
+
+def new_questions_list():
+    quests = []
+    for quest in Question.objects.all():
+        answers = Answer.objects.get_answers_for_quest(quest).count()
+        likes = LikeQuestion.objects.get_likes(quest).count()
+        dislikes = LikeQuestion.objects.get_dislikes(quest).count()
+        quests.append((quest, answers, likes, dislikes))
+    return quests
+
+
+def hot_questions_list():
+    quests = []
+    for likes, quest in Question.objects.get_top():
+        answers = Answer.objects.get_answers_for_quest(quest).count()
+        dislikes = LikeQuestion.objects.get_dislikes(quest).count()
+        quests.append((quest, answers, likes, dislikes))
+    return quests
 
 
 def index(request):
-    page = paginate(INDEX_CONTEXT["quests"], request.GET.get('page'))
     return render(request, "index.html", {"index": INDEX_CONTEXT,
-                                          "page": page,
-                                          "hot_tags": INDEX_CONTEXT["hot_tags"],
-                                          "hot_members": INDEX_CONTEXT["hot_members"]})
+                                          "page": paginate(new_questions_list(), request.GET.get('page')),
+                                          "hot_tags": hot_tags(),
+                                          "hot_members": HOT_MEMBERS})
 
 
 def hot(request):
-    return render(request, "hot.html", {"index": INDEX_CONTEXT})
+    return render(request, "hot.html", {"index": INDEX_CONTEXT,
+                                        "page": paginate(hot_questions_list(), request.GET.get('page')),
+                                        "hot_tags": hot_tags(),
+                                        "hot_members": HOT_MEMBERS})
+
+
+def tag_questions_list(tag):
+    quests = []
+    for quest in Tag.objects.get_qs(tag):
+        answers = Answer.objects.get_answers_for_quest(quest).count()
+        likes = LikeQuestion.objects.get_likes(quest).count()
+        dislikes = LikeQuestion.objects.get_dislikes(quest).count()
+        quests.append((quest, answers, likes, dislikes))
+    return quests
 
 
 def tags(request, tag):
     return render(request, "tags.html", {"index": INDEX_CONTEXT,
-                                         "tag": TAGS_CONTEXT[tag],
-                                         "hot_tags": INDEX_CONTEXT["hot_tags"],
-                                         "hot_members": INDEX_CONTEXT["hot_members"]})
+                                         "tag": tag,
+                                         "page": paginate(tag_questions_list(tag), request.GET.get('page')),
+                                         "hot_tags": hot_tags(),
+                                         "hot_members": HOT_MEMBERS})
+
+
+def answers_list(quest):
+    answers = []
+    for ans in Answer.objects.get_answers_for_quest(quest):
+        likes = LikeAnswer.objects.get_likes(ans).count()
+        dislikes = LikeAnswer.objects.get_dislikes(ans).count()
+        answers.append((ans, likes, dislikes))
+    return answers
+
+
+def one_question(quest):
+    likes = LikeQuestion.objects.get_likes(quest).count()
+    dislikes = LikeQuestion.objects.get_dislikes(quest).count()
+    return quest, likes, dislikes
 
 
 def question(request, i):
-    page = paginate(QUESTIONS_CONTEXT[i - 1]["answers"], request.GET.get('page'))
+    quest = Question.objects.get(pk=i)
     return render(request, "question.html", {"index": INDEX_CONTEXT,
-                                             "quest": QUESTIONS_CONTEXT[i - 1],
-                                             "page": page,
-                                             "hot_tags": INDEX_CONTEXT["hot_tags"],
-                                             "hot_members": INDEX_CONTEXT["hot_members"]})
+                                             "question": [one_question(quest)],
+                                             "page": paginate(answers_list(quest), request.GET.get('page')),
+                                             "hot_tags": hot_tags(),
+                                             "hot_members": HOT_MEMBERS})
 
 
 def login(request):
     return render(request, "login.html", {"hot_tags": INDEX_CONTEXT["hot_tags"],
-                                          "hot_members": INDEX_CONTEXT["hot_members"]})
+                                          "hot_members": HOT_MEMBERS})
 
 
 def signup(request):
     return render(request, "signup.html", {"hot_tags": INDEX_CONTEXT["hot_tags"],
-                                           "hot_members": INDEX_CONTEXT["hot_members"]})
+                                           "hot_members": HOT_MEMBERS})
 
 
 def ask(request):
     return render(request, "ask.html", {"index": INDEX_CONTEXT,
                                         "hot_tags": INDEX_CONTEXT["hot_tags"],
-                                        "hot_members": INDEX_CONTEXT["hot_members"]})
+                                        "hot_members": HOT_MEMBERS})
 
 
 def users(request, user_name):
@@ -114,6 +167,6 @@ def users(request, user_name):
 
 
 def paginate(objects_list, per_page=1):
-    p = Paginator(objects_list, 2)
+    p = Paginator(objects_list, 3)
     page = p.get_page(per_page)
     return page

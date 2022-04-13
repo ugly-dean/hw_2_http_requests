@@ -8,17 +8,21 @@
     <span style="margin-bottom: 10px;">{{ answer.text }}</span>
     <div class="row question-tags">
       <div class="col-8 form-check">
-        <input class="form-check-input ugly-checkbox" type="checkbox">
+          {% if answer.relevance == True %}
+            <input class="form-check-input ugly-checkbox" type="checkbox" checked="yes">
+          {% else %}
+            <input class="form-check-input ugly-checkbox" type="checkbox">
+          {% endif %}
         <label class="form-check-label" for="flexCheckDefault">
           Really ugly!
         </label>
       </div>
       <div class="col-4 row">
         <button type="button" class="col-6 btn btn-like">
-          <span class="like-text">Likes<span class="like-text counters">{{ answer.likes }}</span></span>
+          <span class="like-text">Likes<span class="like-text counters">{{ likes }}</span></span>
         </button>
         <button type="button" class="col-6 btn btn-like">
-          <span class="like-text">Hates<span class="like-text counters">{{ answer.dislikes }}</span></span>
+          <span class="like-text">Hates<span class="like-text counters">{{ dislikes }}</span></span>
         </button>
       </div>
     </div>

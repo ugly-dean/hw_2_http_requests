@@ -4,7 +4,7 @@
 
   {% include "includes/main_question.html" %}
 
-  {% for answer in page %}
+  {% for answer, likes, dislikes in page %}
     {% include "includes/answer.html" %}
   {% endfor %}
 

@@ -3,11 +3,8 @@
 
 {% block content %}
   <div class="row">
-    <div class="col-6">
-      <a class="link-question-active" href='#''><h3 class="head">New questions</h3></a>
-    </div>
-    <div class="col-6">
-      <a class="link-question" href={% url 'hot' %}><h3 class="head">Ugliest questions</h3></a>
+    <div class="col-12">
+      <a class="link-question-active" href='#'><h3 class="head">{{ tag }}</h3></a>
     </div>
   </div>
 
